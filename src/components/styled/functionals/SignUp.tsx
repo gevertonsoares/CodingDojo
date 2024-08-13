@@ -6,6 +6,8 @@ import { v4 as generateToken } from 'uuid';
 import { isEmailValid } from "../../../utils/validate-email";
 import { enqueueSnackbar } from "notistack";
 import { Link, useNavigate } from "react-router-dom";
+import { isSequential } from "../../../utils/validate-number-sequential";
+import { isPasswordValid } from "../../../utils/validate-number-characters-password";
 
 
 
@@ -44,7 +46,17 @@ export default function Signup() {
                 variant: 'error'
             });
             return 
-        } else if(isEmailValid(email)) {
+        } else if (isSequential(password)) {
+            enqueueSnackbar("Senha não deve utilizar numeros sequenciais!", {
+                variant: 'error'
+            });
+            return 
+        } else if (!isPasswordValid(password)) {
+            enqueueSnackbar("Senha deve conter mais de 4 caracteres!", {
+                variant: 'error'
+            });
+            return 
+        } else if (isEmailValid(email)) {
             enqueueSnackbar("Conta criada com sucesso!", {
                 variant: 'success'
             });
