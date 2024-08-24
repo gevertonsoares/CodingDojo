@@ -53,12 +53,13 @@ export default function Login() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 minHeight: '90vh',
+                paddingX: 2
                 }}
                 >
                 <Typography variant="h2" component="h1">CoddingDojo</Typography>
                 <Box
-                    height={500}
-                    width={500}
+                    height={{ xs: 'auto', md: 500 }}
+                    width={{ xs: '100%', md: 500 }}
                     my={4}
                     display="flex"
                     flexDirection={'column'}
@@ -73,7 +74,7 @@ export default function Login() {
 
                     <Divider orientation="horizontal" variant="middle" flexItem />
 
-                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: '350px' }}>
+                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: '100%' }}>
                         <TextField value={email} onChange={handleInputEmail} size="small" id="filled-basic" label="Email" type="email" variant="filled" required/>
                         <TextField value={password} onChange={handleInputPassword} size="small" id="filled-basic" label="Password" type="password" variant="filled" required/>
                         <Button type="submit" variant="contained">Login</Button>
